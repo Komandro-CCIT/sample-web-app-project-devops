@@ -1,0 +1,27 @@
+@base()
+@slot("content")
+<div class="container mt-5">
+  <div class="row mb-4">
+    <div class="col-6">
+      <h5 class="mb-4">Buat Todo Baru</h5>
+
+      <form method="POST" action="{{ route('todo.store') }}">
+        {{ csrfField() }}
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Place your title here...">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" rows="3"
+            placeholder="Place your description here...." name="description"></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-md btn-info" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@end
+@end

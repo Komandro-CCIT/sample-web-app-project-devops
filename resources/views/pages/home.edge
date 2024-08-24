@@ -1,0 +1,49 @@
+@base()
+@slot("content")
+<div class="container mt-5">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h5 class="mb-4">Judul Halaman</h5>
+      <table class="table table-hover ">
+        <thead>
+          <tr>
+            <th scope="col ">Title</th>
+            <th scope="col ">Description</th>
+            <th scope="col ">Created At</th>
+            <th scope="col ">Status</th>
+            <th scope="col ">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @each(todo in todos)
+          <tr>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.description }}</td>
+            <td>{{ todo.createdAt }}</td>
+            <td>
+              <span class="badge badge-info text-white ">{{ todo.status }}</span>
+            </td>
+            <td>
+              <div class="btn-group " role="group " aria-label="Basic example ">
+                <a href="{{ route('todo.edit', {id: todo.id}) }} " class="btn btn-info text-white ">
+                  <i class='bx bx-pencil'></i>
+                </a>
+                <form action="{{ route('todo.destroy', {id: todo.id}) }}?_method=DELETE"
+                  method="POST"
+                  onsubmit="return confirm('Are you sure want to delete data?')">
+                  {{ csrfField() }}
+                  <button type="submit" class="btn btn-danger text-white ">
+                    <i class='bx bx-trash'></i>
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          @end
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+@end
+@end
